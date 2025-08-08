@@ -4,12 +4,19 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/assets/
 
 # testing
 /coverage
 
 # production
 /build
+
+/src/theme.js
+/src/serviceWorker.js
+
+
+
 
 # misc
 .DS_Store
