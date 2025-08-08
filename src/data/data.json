@@ -1,0 +1,129 @@
+{
+  "Header": {
+    "title": "Hari Kripa Foundation",
+    "paragraph": "Illuminating Lives Through Spiritual Wisdom and Compassionate Service"
+  },
+  "About": {
+    "paragraph": "Hari Kripa Foundation is a spiritual organization dedicated to spreading the light of ancient wisdom while serving humanity through various charitable initiatives.",
+    "Why": {
+      "paragraph": "We are committed to preserving and sharing timeless spiritual wisdom that brings peace, purpose, and transformation to individuals and communities.",
+      "paragraph2": "Our foundation is built on the principles of compassion, service, and spiritual growth, fostering a community where everyone can thrive.",
+      "paragraph3": "Through our various programs and initiatives, we have touched thousands of lives, bringing positive change and spiritual awakening to communities worldwide."
+    }
+  },
+  "Gallery": [
+    {
+      "title": "Spiritual Programs",
+      "largeImage": "img/portfolio/01-large.jpg",
+      "smallImage": "img/portfolio/01-small.jpg"
+    },
+    {
+      "title": "Community Service",
+      "largeImage": "img/portfolio/02-large.jpg",
+      "smallImage": "img/portfolio/02-small.jpg"
+    },
+    {
+      "title": "Vedic Education",
+      "largeImage": "img/portfolio/03-large.jpg",
+      "smallImage": "img/portfolio/03-small.jpg"
+    },
+    {
+      "title": "Youth Programs",
+      "largeImage": "img/portfolio/04-large.jpg",
+      "smallImage": "img/portfolio/04-small.jpg"
+    },
+    {
+      "title": "Food Distribution",
+      "largeImage": "img/portfolio/05-large.jpg",
+      "smallImage": "img/portfolio/05-small.jpg"
+    },
+    {
+      "title": "Cultural Events",
+      "largeImage": "img/portfolio/06-large.jpg",
+      "smallImage": "img/portfolio/06-small.jpg"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-om",
+      "name": "Spiritual Programs",
+      "text": "Regular meditation sessions, spiritual discourses, and workshops for inner growth"
+    },
+    {
+      "icon": "fa fa-heart",
+      "name": "Community Service",
+      "text": "Food distribution, education support, and healthcare initiatives for the underprivileged"
+    },
+    {
+      "icon": "fa fa-book",
+      "name": "Vedic Education",
+      "text": "Classes on ancient scriptures, philosophy, and practical spiritual wisdom"
+    },
+    {
+      "icon": "fa fa-hands-helping",
+      "name": "Youth Programs",
+      "text": "Character building and leadership development through spiritual principles"
+    }
+  ],
+  "Testimonials": [
+    {
+      "img": "img/testimonials/01.jpg",
+      "text": "\"The spiritual teachings at Hari Kripa Foundation have transformed my life completely. I found inner peace and purpose.\"",
+      "name": "Priya Sharma"
+    },
+    {
+      "img": "img/testimonials/02.jpg",
+      "text": "\"Their community service programs have shown me the true meaning of selfless service and compassion.\"",
+      "name": "Rahul Verma"
+    },
+    {
+      "img": "img/testimonials/03.jpg",
+      "text": "\"The foundation's approach to combining spiritual wisdom with practical service is truly inspiring.\"",
+      "name": "Anjali Patel"
+    }
+  ],
+  "Team": [
+    {
+      "img": "img/team/01.jpg",
+      "name": "Swami Krishnananda",
+      "job": "Spiritual Guide"
+    },
+    {
+      "img": "img/team/02.jpg",
+      "name": "Dr. Meera Gupta",
+      "job": "Program Director"
+    },
+    {
+      "img": "img/team/03.jpg",
+      "name": "Shri Ramesh Kumar",
+      "job": "Community Service Head"
+    }
+  ],
+  "Contact": {
+    "address": "Prem Nagar Aashram, Jwalapur Road ,Haridwar.",
+    "phone": "+91 98765 43210",
+    "email": "shreeharikrupafoundation936@gmail.com",
+    "facebook": "https://www.facebook.com/satvikbhavani.upadhayay",
+    "twitter": "twitter.com/harikripafdn",
+    "youtube": "youtube.com/harikripafoundation",
+    "instagram": "https://www.instagram.com/astrobhavani_237"
+  },
+  "Features": [
+    {
+      "icon": "fa fa-om",
+      "title": "Daily Meditation",
+      "text": "Guided meditation sessions for inner peace and spiritual growth"
+    },
+    {
+      "icon": "fa fa-book",
+      "title": "Spiritual Library",
+      "text": "Extensive collection of spiritual texts and resources"
+    },
+    {
+      "icon": "fa fa-hands-helping",
+      "title": "Community Support",
+      "text": "Regular programs for community welfare and development"
+    }
+  ]
+}
+

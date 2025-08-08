@@ -1,0 +1,3 @@
+/* /index.html 200
+/img/* /img/:splat 200
+/logo.png /logo.png 200 
