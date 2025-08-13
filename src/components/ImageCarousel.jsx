@@ -12,6 +12,20 @@ import img6 from '../assets/car/img6.jpeg';
 import img7 from '../assets/car/img7.jpeg';
 import img8 from '../assets/car/img8.jpeg';
 import img9 from '../assets/car/img9.jpeg';
+import img10 from '../assets/car/img10.jpg';
+import img11 from '../assets/car/img11.jpg';
+import img12 from '../assets/car/img12.jpg';
+import img13 from '../assets/car/img13.jpg';
+import img14 from '../assets/car/img14.jpg';
+import img15 from '../assets/car/img15.jpg';
+import img16 from '../assets/car/img16.jpg';
+import img17 from '../assets/car/img17.jpg';
+import img18 from '../assets/car/img18.jpg';
+
+
+
+
+
 
 const images = [
   {
@@ -49,7 +63,45 @@ const images = [
   {
     url: img9,
     alt: "Harikripa Foundation Event"
-  }
+  },
+  {
+    url: img10,
+    alt: "Harikripa Foundation Event"
+  },
+  {
+    url: img11,
+    alt: "Harikripa Foundation Event"
+  },
+  {
+    url: img12,
+    alt: "Harikripa Foundation Event"
+  },
+  {
+    url: img13,
+    alt: "Harikripa Foundation Event"
+  },
+  {
+    url: img14,
+    alt: "Harikripa Foundation Event"
+  },
+  {
+    url: img15,
+    alt: "Harikripa Foundation Event"
+  },
+  {
+    url: img16,
+    alt: "Harikripa Foundation Event"
+  },
+   {
+    url: img17,
+    alt: "Harikripa Foundation Event"
+  },
+   {
+    url: img18,
+    alt: "Harikripa Foundation Event"
+  },
+  
+
 ];
 
 const ImageCarousel = () => {

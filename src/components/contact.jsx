@@ -127,7 +127,7 @@ export const Contact = (props) => {
       {/* Footer Bottom */}
       <div className="mt-10 sm:mt-20 border-t border-orange-200 bg-white/50 backdrop-blur-sm py-4 sm:py-6">
         <p className="text-center text-gray-700 text-xs sm:text-sm">
-          © {new Date().getFullYear()} Shree Hari Kripa Foundation. With Love & Light.
+          © {new Date().getFullYear()} Hari Kripa Foundation. With Love & Light.
         </p>
       </div>
     </footer>

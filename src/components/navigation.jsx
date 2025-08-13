@@ -26,8 +26,9 @@ export const Navigation = (props) => {
     // { title: "Resources & Literature", href: "/resources" },
     { 
       title: "Yajman Form", 
-      href: "https://forms.gle/Xg5B7WJEjDR3hQHd6",
-      isExternal: true  // Add this flag to identify external links
+      // href: "https://forms.gle/Xg5B7WJEjDR3hQHd6",
+      href: "/yajman-form", // Internal route instead of external Google Form
+      isExternal: false  // Add this flag to identify external links
     },
     { title: "Contact Us", href: "/contact" }
   ];

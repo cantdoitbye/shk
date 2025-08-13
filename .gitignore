@@ -12,10 +12,6 @@
 # production
 /build
 
-/src/theme.js
-/src/serviceWorker.js
-
-
 
 
 # misc

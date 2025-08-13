@@ -64,7 +64,7 @@ export const Header = (props) => {
               />
             </div>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-8 drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)] [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
-              {props.data ? props.data.title : "Shree Hari Kripa Foundation"}
+              {props.data ? props.data.title : "Hari Kripa Foundation"}
             </h1>
           </motion.div>
 

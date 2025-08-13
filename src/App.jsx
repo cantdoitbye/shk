@@ -11,6 +11,10 @@ import ContactPage from "./pages/ContactPage";
 import AboutPage from "./pages/AboutPage";
 import Donate from './pages/Donate';
 import Events from './pages/Events';
+import YajmanForm from './components/YajmanForm';
+import Membership from './pages/Membership';
+
+
 
 
 
@@ -429,6 +433,9 @@ const App = () => {
         <Route path="/About" element={<AboutPage />} />
         <Route path="/donate" element={<Donate />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/membership" element={<Membership />} />
+        <Route path="/yajman-form" element={<YajmanForm />} />
+
         
         {/* <Route path="/donate" element={<DonatePage />} /> */}
       </Routes>
