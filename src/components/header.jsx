@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaHeart, FaPrayingHands } from "react-icons/fa";
-import { Link } from 'react-router-dom'; // Add this import
+import { Link } from 'react-router-dom';
 
 // Import images and logo
 import img1 from '../assets/car/img1.jpeg';
@@ -27,7 +27,7 @@ export const Header = (props) => {
   }, []);
 
   return (
-    <header className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+    <header className="relative min-h-screen pt-14 flex items-center justify-center overflow-hidden">
       {/* Background Image Carousel with Overlay */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -48,7 +48,7 @@ export const Header = (props) => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 -translate-y-16">
+      <div className="container mx-auto px-4 z-10">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -56,16 +56,8 @@ export const Header = (props) => {
             transition={{ duration: 0.8 }}
             className="mb-8 relative"
           >
-            <div className="relative">
-              <img 
-                src={logo} 
-                alt="Harikripa Foundation Logo" 
-                className="h-28 md:h-36 mx-auto mb-8 filter brightness-0 invert drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-              />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-white mb-8 drop-shadow-[0_5px_15px_rgba(0,0,0,0.5)] [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
-              {props.data ? props.data.title : "Hari Kripa Foundation"}
-            </h1>
+          
+          
           </motion.div>
 
           <motion.div
@@ -74,26 +66,27 @@ export const Header = (props) => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6"
           >
-            {/* <a 
-              href="#contact" 
-              className="px-8 py-3 bg-white/90 text-primary rounded-full font-medium hover:bg-white transition-all duration-300 flex items-center hover:scale-105 shadow-xl backdrop-blur-sm"
-            >
-              <FaPrayingHands className="mr-2" />
-              Become a Member
-            </a> */}
-            {/* <a 
-              href="/donate" 
-              className="px-8 py-3 bg-transparent border-2 border-white/90 text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300 flex items-center hover:scale-105 shadow-lg backdrop-blur-sm"
-            > */}
-              {/* <FaHeart className="mr-2" /> */}
-              {/* <Link 
-                to="/donate" 
-                className="your-button-classes"
-              >
-                Donate Now
-              </Link> */}
-            {/* </a> */}
+         
           </motion.div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="text-white opacity-75 hover:opacity-100 transition-opacity cursor-pointer">
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
         </div>
       </div>
     </header>

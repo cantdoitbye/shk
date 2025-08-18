@@ -53,7 +53,7 @@ export const Contact = (props) => {
                   <FaMapMarkerAlt className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-medium text-gray-900">Katha Sthal</h3>
+                  <h3 className="text-base sm:text-lg font-medium text-gray-900">Official Address</h3>
                   <p className="text-xs sm:text-sm text-gray-600">{props.data ? props.data.address : "Loading..."}</p>
                 </div>
               </div>
