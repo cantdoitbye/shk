@@ -12,6 +12,7 @@ import AboutPage from "./pages/AboutPage";
 import Donate from './pages/Donate';
 import Events from './pages/Events';
 import YajmanForm from './components/YajmanForm';
+import ShortAbout from './components/ShortAbout';
 import Membership from './pages/Membership';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight, FaTimes, FaExpand, FaDownload } from "react-icons/fa";
@@ -43,7 +44,7 @@ const AnnouncementBar = () => {
             <div className="flex-1">
               <h3 className="text-primary font-bold text-base uppercase tracking-wider mb-1">Next Event</h3>
               <p className="text-gray-800 font-semibold text-lg">
-                29 May – 5 June, 2025 • 7:00 AM Daily
+                24 Nov – 1 Dec, 2025 • 7:00 AM Daily
               </p>
               <p className="text-sm text-gray-600">
                 Bhagwat Katha & Havan • Satpal Maharaj Ashram
@@ -538,6 +539,7 @@ const HomePage = () => {
   return (
     <>
       <Header />
+      <ShortAbout />
       <ImageCarousel />
       {/* Previous Works Carousel below the main carousel */}
       <PreviousWorksCarousel />

@@ -41,6 +41,8 @@ const YajmanForm = () => {
 const [selectedYajmanDetails, setSelectedYajmanDetails] = useState(null);
 const [paymentAmount, setPaymentAmount] = useState(0);
 const [isPaymentRequired, setIsPaymentRequired] = useState(false);
+const [selectedPaymentPercentage, setSelectedPaymentPercentage] = useState(50);
+
   // Yajman Types with correct Hindi names and amounts from your image
 const yajmanTypes = [
   {
@@ -103,32 +105,50 @@ const yajmanTypes = [
 
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+  const { name, value } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: value
+  }));
+
+  // Auto-fill amount and calculate advance when yajman type is selected
+  if (name === 'yajmanType') {
+    const selectedType = yajmanTypes.find(type => type.id === value);
+    if (selectedType) {
+      const totalAmountNum = parseFloat(selectedType.amount.replace(/[,/-]/g, ''));
+      const advanceAmountNum = Math.round(totalAmountNum * (selectedPaymentPercentage / 100));
+      const balanceAmountNum = totalAmountNum - advanceAmountNum;
+      
+      setFormData(prev => ({
+        ...prev,
+        totalAmount: totalAmountNum.toString(),
+        advanceAmount: advanceAmountNum.toString(),
+        balanceAmount: balanceAmountNum.toString()
+      }));
+      
+      setPaymentAmount(advanceAmountNum);
+      setIsPaymentRequired(true);
+    }
+  }
+};
+
+const handlePaymentPercentageChange = (percentage) => {
+  setSelectedPaymentPercentage(percentage);
+  
+  if (formData.totalAmount) {
+    const totalAmountNum = parseFloat(formData.totalAmount);
+    const advanceAmountNum = Math.round(totalAmountNum * (percentage / 100));
+    const balanceAmountNum = totalAmountNum - advanceAmountNum;
+    
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      advanceAmount: advanceAmountNum.toString(),
+      balanceAmount: balanceAmountNum.toString()
     }));
-
-    // Auto-fill amount and calculate 50% advance when yajman type is selected
-    if (name === 'yajmanType') {
-      const selectedType = yajmanTypes.find(type => type.id === value);
-      if (selectedType) {
-        const totalAmountNum = parseFloat(selectedType.amount.replace(/[,/-]/g, ''));
-        const advanceAmountNum = Math.round(totalAmountNum * 0.5); // 50% advance
-        const balanceAmountNum = totalAmountNum - advanceAmountNum;
-        
-        setFormData(prev => ({
-          ...prev,
-          totalAmount: totalAmountNum.toString(),
-          advanceAmount: advanceAmountNum.toString(),
-          balanceAmount: balanceAmountNum.toString()
-        }));
-        
-        setPaymentAmount(advanceAmountNum);
-        setIsPaymentRequired(true);
-      }
-    }
-  };
+    
+    setPaymentAmount(advanceAmountNum);
+  }
+};
 
   // Razorpay Payment Integration
 const initiatePayment = async () => {
@@ -171,7 +191,8 @@ const initiatePayment = async () => {
   console.log('Razorpay is available, creating payment...');
 
   const options = {
-    key: 'rzp_test_1DP5mmOlF5G5ag', // Replace with your Razorpay Key ID
+    // key: 'rzp_test_1DP5mmOlF5G5ag', // Replace with your Razorpay Key ID
+    key: process.env.REACT_APP_RAZORPAY_KEY,
     amount: paymentAmount * 100,
     currency: 'INR',
     name: 'श्री हरिकृपा फाउंडेशन',
@@ -618,116 +639,170 @@ const initiatePayment = async () => {
           </div>
 
           {/* Dakshina Details */}
-          <div className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <Mail className="w-5 h-5 text-orange-600" />
-              <h3 className="text-xl font-semibold text-gray-800">दक्षिणा विवरण / Dakshina Details</h3>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  कुल दक्षिणा / Total Dakshina (₹) *
-                </label>
-                <input
-                  type="number"
-                  name="totalAmount"
-                  value={formData.totalAmount}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
-                  readOnly
-                />
-                <p className="text-xs text-gray-500 mt-1">यजमान प्रकार चुनने पर स्वचालित रूप से भर जाएगा</p>
+         {/* Dakshina Details */}
+<div className="mb-8">
+  <div className="flex items-center gap-2 mb-4">
+    <Mail className="w-5 h-5 text-orange-600" />
+    <h3 className="text-xl font-semibold text-gray-800">दक्षिणा विवरण / Dakshina Details</h3>
+  </div>
+  
+  {/* Payment Percentage Selection */}
+  {formData.yajmanType && (
+    <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+      <h4 className="text-lg font-semibold text-gray-800 mb-3">
+        भुगतान प्रतिशत चुनें / Select Payment Percentage
+      </h4>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {[25, 50, 75, 100].map((percentage) => (
+          <div key={percentage} className="relative">
+            <input
+              type="radio"
+              id={`payment-${percentage}`}
+              name="paymentPercentage"
+              value={percentage}
+              checked={selectedPaymentPercentage === percentage}
+              onChange={() => handlePaymentPercentageChange(percentage)}
+              className="sr-only"
+            />
+            <label
+              htmlFor={`payment-${percentage}`}
+              className={`block w-full p-3 text-center border-2 rounded-lg cursor-pointer transition-all ${
+                selectedPaymentPercentage === percentage
+                  ? 'border-orange-500 bg-orange-100 text-orange-800'
+                  : 'border-gray-300 bg-white text-gray-700 hover:border-orange-300'
+              }`}
+            >
+              <div className="font-semibold">{percentage}%</div>
+              <div className="text-xs mt-1">
+                {percentage === 100 ? 'पूरा भुगतान' : 'अग्रिम भुगतान'}
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  अग्रिम राशि (50%) / Advance Amount (50%) (₹) *
-                </label>
-                <input
-                  type="number"
-                  name="advanceAmount"
-                  value={formData.advanceAmount}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
-                  readOnly
-                />
-                <p className="text-xs text-orange-600 mt-1 font-medium">भुगतान आवश्यक / Payment Required</p>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  शेष राशि / Balance Amount (₹)
-                </label>
-                <input
-                  type="number"
-                  name="balanceAmount"
-                  value={formData.balanceAmount}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
-                  readOnly
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  राशि शब्दों में / Amount in Words *
-                </label>
-                <input
-                  type="text"
-                  name="amountInWords"
-                  value={formData.amountInWords}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                  placeholder="Example: Five Thousand One Hundred Eleven Only"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Payment Status */}
-            {formData.paymentId && (
-              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <CreditCard className="w-5 h-5 text-green-600" />
-                  <span className="font-medium text-green-800">
-                    भुगतान सफल / Payment Successful
-                  </span>
+              {formData.totalAmount && (
+                <div className="text-sm font-medium mt-1">
+                  ₹{Math.round(parseFloat(formData.totalAmount) * (percentage / 100)).toLocaleString('en-IN')}
                 </div>
-                <p className="text-sm text-green-700 mt-1">
-                  Payment ID: {formData.paymentId}
-                </p>
-              </div>
-            )}
+              )}
+            </label>
           </div>
+        ))}
+      </div>
+      <p className="text-sm text-gray-600 mt-3">
+        <strong>नोट:</strong> आप अपनी सुविधानुसार कोई भी प्रतिशत चुन सकते हैं। शेष राशि बाद में भी दी जा सकती है।
+      </p>
+    </div>
+  )}
+
+  <div className="grid md:grid-cols-2 gap-4">
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1">
+        कुल दक्षिणा / Total Dakshina (₹) *
+      </label>
+      <input
+        type="number"
+        name="totalAmount"
+        value={formData.totalAmount}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
+        readOnly
+      />
+      <p className="text-xs text-gray-500 mt-1">यजमान प्रकार चुनने पर स्वचालित रूप से भर जाएगा</p>
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1">
+        अग्रिम राशि ({selectedPaymentPercentage}%) / Advance Amount ({selectedPaymentPercentage}%) (₹) *
+      </label>
+      <input
+        type="number"
+        name="advanceAmount"
+        value={formData.advanceAmount}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
+        readOnly
+      />
+      <p className="text-xs text-orange-600 mt-1 font-medium">
+        {selectedPaymentPercentage === 100 ? 'पूरा भुगतान / Full Payment' : 'भुगतान आवश्यक / Payment Required'}
+      </p>
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1">
+        शेष राशि / Balance Amount (₹)
+      </label>
+      <input
+        type="number"
+        name="balanceAmount"
+        value={formData.balanceAmount}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50"
+        readOnly
+      />
+    </div>
+    <div>
+      <label className="block text-sm font-medium text-gray-700 mb-1">
+        राशि शब्दों में / Amount in Words *
+      </label>
+      <input
+        type="text"
+        name="amountInWords"
+        value={formData.amountInWords}
+        onChange={handleChange}
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+        placeholder="Example: Five Thousand One Hundred Eleven Only"
+        required
+      />
+    </div>
+  </div>
+
+  {/* Payment Status */}
+  {formData.paymentId && (
+    <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+      <div className="flex items-center gap-2">
+        <CreditCard className="w-5 h-5 text-green-600" />
+        <span className="font-medium text-green-800">
+          भुगतान सफल / Payment Successful
+        </span>
+      </div>
+      <p className="text-sm text-green-700 mt-1">
+        Payment ID: {formData.paymentId}
+      </p>
+    </div>
+  )}
+</div>
 
           {/* Payment Section */}
-          {isPaymentRequired && formData.yajmanType && formData.paymentStatus !== "completed" && (
-            <div className="mb-8">
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <CreditCard className="w-6 h-6 text-orange-600" />
-                  <h3 className="text-xl font-semibold text-gray-800">भुगतान / Payment</h3>
-                </div>
-                
-                <div className="mb-4">
-                  <div className="text-lg font-semibold text-gray-900 mb-2">
-                    भुगतान राशि / Payment Amount: ₹{paymentAmount.toLocaleString('en-IN')}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    यह कुल राशि का 50% अग्रिम भुगतान है / This is 50% advance payment of total amount
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={initiatePayment}
-                  className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
-                >
-                  <CreditCard className="w-5 h-5" />
-                  ₹{paymentAmount.toLocaleString('en-IN')} का भुगतान करें / Pay ₹{paymentAmount.toLocaleString('en-IN')}
-                </button>
-                
-                <div className="mt-3 text-xs text-gray-500 text-center">
-                  <div>Powered by Razorpay • Secure Payment Gateway</div>
-                  <div>UPI, Cards, Net Banking, Wallets accepted</div>
-                </div>
-              </div>
-            </div>
+{isPaymentRequired && formData.yajmanType && formData.paymentStatus !== "completed" && (
+  <div className="mb-8">
+    <div className="bg-orange-50 border border-orange-200 rounded-lg p-6">
+      <div className="flex items-center gap-2 mb-4">
+        <CreditCard className="w-6 h-6 text-orange-600" />
+        <h3 className="text-xl font-semibold text-gray-800">भुगतान / Payment</h3>
+      </div>
+      
+      <div className="mb-4">
+        <div className="text-lg font-semibold text-gray-900 mb-2">
+          भुगतान राशि / Payment Amount: ₹{paymentAmount.toLocaleString('en-IN')}
+        </div>
+        <div className="text-sm text-gray-600">
+          यह कुल राशि का {selectedPaymentPercentage}% भुगतान है / This is {selectedPaymentPercentage}% payment of total amount
+          {selectedPaymentPercentage < 100 && (
+            <span className="block mt-1 text-orange-600 font-medium">
+              शेष ₹{(parseFloat(formData.totalAmount) - paymentAmount).toLocaleString('en-IN')} बाद में देय होगा
+            </span>
           )}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        onClick={initiatePayment}
+        className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
+      >
+        <CreditCard className="w-5 h-5" />
+        ₹{paymentAmount.toLocaleString('en-IN')} का भुगतान करें / Pay ₹{paymentAmount.toLocaleString('en-IN')}
+      </button>
+      
+      <div className="mt-3 text-xs text-gray-500 text-center">
+        <div>Powered by Razorpay • Secure Payment Gateway</div>
+        <div>UPI, Cards, Net Banking, Wallets accepted</div>
+      </div>
+    </div>
+  </div>
+)}
 
           {/* Submit Button */}
           <div className="text-center" id="submit-section">

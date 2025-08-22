@@ -27,7 +27,7 @@ export const Header = (props) => {
   }, []);
 
   return (
-    <header className="relative min-h-screen pt-14 flex items-center justify-center overflow-hidden">
+    <header className="relative min-h-screen pt-16 md:pt-20 flex items-center justify-center overflow-hidden">
       {/* Background Image Carousel with Overlay */}
       <AnimatePresence mode="wait">
         <motion.div
