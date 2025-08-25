@@ -16,6 +16,7 @@ import ShortAbout from './components/ShortAbout';
 import Membership from './pages/Membership';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight, FaTimes, FaExpand, FaDownload } from "react-icons/fa";
+import ImpactGallery from './components/ImpactGallery';
 
 const AnnouncementBar = () => {
   return (
@@ -540,9 +541,10 @@ const HomePage = () => {
     <>
       <Header />
       <ShortAbout />
-      <ImageCarousel />
+      {/* <ImageCarousel /> */}
       {/* Previous Works Carousel below the main carousel */}
-      <PreviousWorksCarousel />
+      {/* <PreviousWorksCarousel /> */}
+      <ImpactGallery />
       <AnnouncementBar />
       <MapSection />
       {/* Add any other components you want on the home page */}
