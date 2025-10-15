@@ -25,92 +25,92 @@ import img18 from '../assets/car/img18.jpg';
 const images = [
   {
     url: img1,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Community Gathering"
   },
   {
     url: img2,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Spiritual Ceremony"
   },
   {
     url: img3,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Cultural Program"
   },
   {
     url: img4,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Community Service"
   },
   {
     url: img5,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Festival Celebration"
   },
   {
     url: img6,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Educational Program"
   },
   {
     url: img7,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Youth Activities"
   },
   {
     url: img8,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Religious Gathering"
   },
   {
     url: img9,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Community Outreach"
   },
   {
     url: img10,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Social Initiative"
   },
   {
     url: img11,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Volunteer Work"
   },
   {
     url: img12,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Cultural Exchange"
   },
   {
     url: img13,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Community Building"
   },
   {
     url: img14,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Spiritual Learning"
   },
   {
     url: img15,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Youth Engagement"
   },
   {
     url: img16,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Community Support"
   },
   {
     url: img17,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Educational Outreach"
   },
   {
     url: img18,
-    alt: "Harikripa Foundation Event",
+    alt: "Shri Hari Krupa Foundation Event",
     title: "Social Harmony"
   }
 ];

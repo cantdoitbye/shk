@@ -7,7 +7,7 @@ import data from './data/data.json';
 function App() {
   return (
     <div className="App">
-      <Navigation data={{ name: "Hari Kripa Foundation" }} />
+      <Navigation data={{ name: "Shri Hari Krupa Foundation" }} />
       <Header data={data.Header} />
       <About data={data.About} />
     </div>

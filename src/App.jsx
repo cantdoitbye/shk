@@ -99,9 +99,9 @@ const AnnouncementBar = () => {
               className="px-8 py-3 bg-white border-2 border-primary text-primary rounded-full font-medium hover:bg-primary/5 transition-all duration-300 flex items-center hover:scale-105 shadow-lg text-base group whitespace-nowrap"
               onClick={() => {
                 const event = {
-                  text: 'Harikripa Foundation Event',
+                  text: 'Shri Hari Krupa Foundation Event',
                   dates: '20241225T123000Z/20241225T153000Z',
-                  details: 'Join us for a special event at Harikripa Foundation',
+                  details: 'Join us for a special event at Shri Hari Krupa Foundation',
                   location: 'Mumbai, India'
                 };
                 window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.text)}&dates=${event.dates}&details=${encodeURIComponent(event.details)}&location=${encodeURIComponent(event.location)}`);

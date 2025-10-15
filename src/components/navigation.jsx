@@ -71,16 +71,33 @@ export const Navigation = (props) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo and Foundation Name */}
           <Link to="/">
-            <div className="flex items-center">
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <img 
                 src={logo}
-                alt="Harikripa Foundation" 
+                alt="Shri Hari Krupa Foundation" 
                 className={`w-auto transition-all duration-300 ${
-                  isScrolled ? 'h-10' : 'h-12'
+                  isScrolled ? 'h-8 sm:h-10' : 'h-10 sm:h-12'
                 }`}
               />
+              <div className="flex flex-col">
+                <h1 className={`font-bold text-primary transition-all duration-300 ${
+                  isScrolled ? 'text-sm sm:text-lg' : 'text-base sm:text-xl'
+                } leading-tight hidden xs:block`}>
+                  Shri Hari Krupa Foundation
+                </h1>
+                <h1 className={`font-bold text-primary transition-all duration-300 ${
+                  isScrolled ? 'text-xs' : 'text-sm'
+                } leading-tight block xs:hidden`}>
+                  Shri Hari Krupa<br />Foundation
+                </h1>
+                <p className={`text-gray-600 transition-all duration-300 ${
+                  isScrolled ? 'text-xs hidden sm:block' : 'text-xs sm:text-sm'
+                } leading-tight`}>
+                  Serving with Devotion
+                </p>
+              </div>
             </div>
           </Link>
 

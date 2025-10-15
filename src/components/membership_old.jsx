@@ -231,7 +231,7 @@ export const Contact = (props) => {
       <div className="border-t border-gray-200 mt-16">
         <div className="container mx-auto px-4 py-6">
           <p className="text-center text-gray-600 text-sm">
-            © {new Date().getFullYear()} Hari Kripa Foundation. All rights reserved.
+            © {new Date().getFullYear()} Shri Hari Krupa Foundation. All rights reserved.
           </p>
         </div>
       </div>

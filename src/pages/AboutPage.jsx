@@ -149,7 +149,7 @@ From a young age, our Gurudev was immersed in learning, meditation, and spiritua
 His life has always been rooted in tapasya (austerity), self-study, and service. The foundation of his future spiritual mission was laid during these formative years of intense practice and devotion.`,
       
       achievements: [
-        'Founded Hari Kripa Foundation',
+        'Founded Shri Hari Krupa Foundation',
         'Guided thousands in spiritual practices',
         'Established multiple community service programs',
         'Author of several spiritual texts'
@@ -234,7 +234,7 @@ By the age of 12, she had not only studied deeply but also started sharing disco
       title: 'Spiritual Guide & Founder',
       image: gurujImage,
       sanskrit: 'श्री गुरुजी महाराज',
-      shortDesc: 'Revered spiritual teacher and the guiding light of Hari Kripa Foundation'
+      shortDesc: 'Revered spiritual teacher and the guiding light of Shri Hari Krupa Foundation'
     },
     {
       id: 'deviji',
